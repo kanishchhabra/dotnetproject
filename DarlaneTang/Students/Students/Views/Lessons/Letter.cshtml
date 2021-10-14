@@ -1,0 +1,42 @@
+﻿@model Students.Models.Lesson
+
+@{
+    ViewData["Title"] = "Letter";
+}
+<h1>Letter</h1>
+<b>****If your bank details do not show, please go back and prepare letter****</b>
+<hr />
+
+<h3>Dear @Html.DisplayFor(model => model.Student.Fname)</h3>
+<p>
+    Welcome to all existing students and new students. <b>@Html.DisplayFor(model => model.Term)</b> will commence <b>@Html.DisplayFor(model => model.TimeYear)</b>
+    Please ensure your payment is finalised by <b>@Html.DisplayFor(model => model.TimeYear)</b>. If a student is no longer attending
+    lessons, please email the CYCM to be removed off the email list.
+</p>
+<p>
+    If paying by Bank Transfer - EFT, please forward a copy of your payment to the office, to follow up and
+    allocate to the student
+</p>
+<h4>PAYMENT DETAILS:</h4>
+<p>Ref No: <b>@Html.DisplayFor(model => model.Letter.ReferenceNo)</b></p>
+<p>Student: <b> @Html.DisplayFor(model => model.Student.FullName)</b></p>
+<p>Amount: <b>@Html.DisplayFor(model => model.Duration.Cost)</b></p>
+<p>Please follow the <a href="#">Link</a> to make payment for <b>@Html.DisplayFor(model => model.Term), @Html.DisplayFor(model => model.TimeYear)</b> </p>
+<p class="font-weight-bold">
+    Apply for your sport vouchers for @Html.DisplayFor(model => model.Term), @Html.DisplayFor(model => model.TimeYear) please visit the <a href="http://www.sportvoucher.nt.gov.au">NT Sport Voucher</a>, as
+    schools are no longer providing students with a sport voucher.
+</p>
+<hr />
+<p class="font-weight-bold">Alternatively pay via Bank Transfer - EFT - CDU bank details, delete old bank details:</p>
+<p class="font-weight-bold">New Bank Details</p>
+<p>Bank: <b>@Html.DisplayFor(model => model.Letter.Bank)</b></p>
+<p>Account Name: <b>@Html.DisplayFor(model => model.Letter.AccName)</b></p>
+<p>BSB Number: <b>@Html.DisplayFor(model => model.Letter.BSB)</b></p>
+<p>Account Number: <b>@Html.DisplayFor(model => model.Letter.AccNo)</b></p>
+<p>Reference number - please include 'CYCM, Reference number and student name'</p>
+<i><b>The CYCM is commited to providing students with quality lessons in a positive learning environment.</b></i>
+<hr />
+<p>Regards</p>
+<p><b>@Html.DisplayFor(model => model.Letter.SigEmail)</b></p>
+
+<button type="button" class="btn btn-primary btn-lg btn-block">Send Email</button>
