@@ -1,0 +1,77 @@
+﻿@model IEnumerable<CDUMusic.Models.Lesson>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LessonName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tutor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Instrument)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LessonYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LessonTerm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LessonDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LessonTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LessonName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tutor.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Instrument.InstrumentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LessonYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LessonTerm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LessonDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LessonTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration.DurationId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.LessonId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.LessonId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.LessonId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
