@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HIT339_Assignment_1.Migrations
 {
-    public partial class initmigration : Migration
+    public partial class initialcreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -64,10 +64,11 @@ namespace HIT339_Assignment_1.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     StudentID = table.Column<int>(type: "int", nullable: false),
-                    InstructoirID = table.Column<int>(type: "int", nullable: false),
+                    InstructorID = table.Column<int>(type: "int", nullable: false),
                     InstrumentID = table.Column<int>(type: "int", nullable: false),
+                    Semester = table.Column<int>(type: "int", nullable: false),
                     Term = table.Column<int>(type: "int", nullable: false),
-                    Year = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LessonDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LessonDuration = table.Column<int>(type: "int", nullable: false),
                     Paid = table.Column<bool>(type: "bit", nullable: false)
                 },
@@ -75,8 +76,8 @@ namespace HIT339_Assignment_1.Migrations
                 {
                     table.PrimaryKey("PK_Lesson", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Lesson_Instructor_InstructoirID",
-                        column: x => x.InstructoirID,
+                        name: "FK_Lesson_Instructor_InstructorID",
+                        column: x => x.InstructorID,
                         principalTable: "Instructor",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -101,9 +102,15 @@ namespace HIT339_Assignment_1.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     StudentID = table.Column<int>(type: "int", nullable: false),
+                    StudentDetails = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Payment = table.Column<int>(type: "int", nullable: false),
                     Reference = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Cost = table.Column<float>(type: "real", nullable: false)
+                    Cost = table.Column<float>(type: "real", nullable: false),
+                    BankName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AccountName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AccountNumber = table.Column<int>(type: "int", nullable: false),
+                    BSB = table.Column<int>(type: "int", nullable: false),
+                    Signature = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -117,7 +124,7 @@ namespace HIT339_Assignment_1.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Lesson_InstructoirID",
+                name: "IX_Lesson_InstructorID",
                 table: "Lesson",
                 column: "InstructorID");
 

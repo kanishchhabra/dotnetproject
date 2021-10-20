@@ -111,6 +111,7 @@ namespace HIT339_Assignment_1.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AccountName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("AccountNumber")
@@ -120,6 +121,7 @@ namespace HIT339_Assignment_1.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("BankName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("Cost")
@@ -132,6 +134,7 @@ namespace HIT339_Assignment_1.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Signature")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StudentDetails")

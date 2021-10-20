@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HIT339_Assignment_1.Migrations
 {
     [DbContext(typeof(HIT339_Assignment_1Context))]
-    [Migration("20210930185118_added-signature-to-letter")]
-    partial class addedsignaturetoletter
+    [Migration("20211020035600_initialcreate")]
+    partial class initialcreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -113,6 +113,7 @@ namespace HIT339_Assignment_1.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AccountName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("AccountNumber")
@@ -122,6 +123,7 @@ namespace HIT339_Assignment_1.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("BankName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("Cost")
@@ -134,6 +136,7 @@ namespace HIT339_Assignment_1.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Signature")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StudentDetails")
