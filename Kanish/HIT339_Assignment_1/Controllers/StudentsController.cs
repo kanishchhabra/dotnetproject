@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using HIT339_Assignment_1.Data;
 using HIT339_Assignment_1.Models;
 
+
 namespace HIT339_Assignment_1.Controllers
 {
     public class StudentsController : Controller
@@ -215,7 +216,8 @@ namespace HIT339_Assignment_1.Controllers
             {
                 return NotFound();
             }
-            var lessons = _context.Lesson.Where(l => l.StudentID == s.Id).Where(l => l.Paid == false);
+            var lessons = _context
+                .Lesson.Where(l => l.StudentID == s.Id).Where(l => l.Paid == false);
             var sum = (float)0.0;
             foreach (Lesson lesson in lessons)
             {
