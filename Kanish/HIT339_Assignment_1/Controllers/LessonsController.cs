@@ -99,9 +99,9 @@ namespace HIT339_Assignment_1.Controllers
             {
                 return NotFound();
             }
-            ViewData["InstructorID"] = new SelectList(_context.Instructor, "Id", "Id", lesson.InstructorID);
-            ViewData["InstrumentID"] = new SelectList(_context.Instrument, "id", "id", lesson.InstrumentID);
-            ViewData["StudentID"] = new SelectList(_context.Student, "Id", "Id", lesson.StudentID);
+            ViewData["InstructorID"] = new SelectList(_context.Instructor, "Id", "IFullName", lesson.InstructorID);
+            ViewData["InstrumentID"] = new SelectList(_context.Instrument, "id", "InstrumentName", lesson.InstrumentID);
+            ViewData["StudentID"] = new SelectList(_context.Student, "Id", "SFullName", lesson.StudentID);
             ViewData["Term"] = new SelectList(Enum.GetValues(typeof(TermType)));
             ViewData["Semester"] = new SelectList(Enum.GetValues(typeof(SemesterType)));
             ViewData["LessonDuration"] = new SelectList(Enum.GetValues(typeof(LessonDurationType)));
@@ -113,7 +113,7 @@ namespace HIT339_Assignment_1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,StudentID,InstructorID,InstrumentID,Term,LessonDate,LessonDuration,Paid")] Lesson lesson)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,StudentID,InstructorID,InstrumentID,Semester,Term,LessonDate,LessonDuration,Paid")] Lesson lesson)
         {
             if (id != lesson.Id)
             {

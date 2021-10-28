@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace HIT339_Assignment_1.Models
 {
+    public enum GenderType
+    {
+        Female,
+        Male,
+        Other
+    }
     public class Instructor
     {
         public int Id { get; set; }
@@ -13,15 +19,17 @@ namespace HIT339_Assignment_1.Models
         public string FirstName { get; set; }
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
-        public string Reference
+
+        [Display(Name = "Full Name")]
+        public string IFullName
         {
-            get { return Id + " : " + FirstName + " " + LastName; }
+            get { return FirstName + " " + LastName; }
         }
         [Display(Name = "Date of Birth")]
         [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
         public int Age { get; set; }
-
         public GenderType Gender { get; set; }
     }
+
 }

@@ -82,6 +82,7 @@ namespace HIT339_Assignment_1.Controllers
             {
                 return NotFound();
             }
+            ViewData["Gender"] = new SelectList(Enum.GetValues(typeof(GenderType)));
             return View(instructor);
         }
 
