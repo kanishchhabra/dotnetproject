@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace HIT339_Assignment_1.Models
 {
@@ -12,9 +13,13 @@ namespace HIT339_Assignment_1.Models
         Trumpet, 
         Violin
     }
+
+
     public class Instrument
     {
         public int id { get; set; }
+
+        [Display(Name = "Instrument")]
         public InstrumentType InstrumentName { get; set; }
     }
 }

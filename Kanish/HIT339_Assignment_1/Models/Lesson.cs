@@ -30,41 +30,41 @@ namespace HIT339_Assignment_1.Models
         
         [Required]
         [ForeignKey("Student")]
-        [Display(Name = "Student ID: ")]
+        [Display(Name = "Student ID")]
         public int StudentID { get; set; }
        
         [Required]
         [ForeignKey("Instructor")]
-        [Display(Name = "Instructor ID: ")]
+        [Display(Name = "Instructor ID")]
         public int InstructorID { get; set; }
         
         [Required]
         [ForeignKey("Instrument")]
-        [Display(Name = "Instrument ID: ")]
+        [Display(Name = "Instrument ID")]
         public int InstrumentID { get; set; }
 
         [Required]
-        [Display(Name = "Semester: ")]
+        [Display(Name = "Semester")]
         public SemesterType Semester { get; set; }
 
         [Required]
-        [Display(Name = "Term: ")]
+        [Display(Name = "Term")]
         public TermType Term { get; set; }
 
         [Required]
-        [Display(Name = "Lesson Date: ")]
+        [Display(Name = "Lesson Date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime LessonDate { get; set; }
 
-        [Display(Name = "Year & Term: ")]
+        [Display(Name = "Year & Term")]
         public string YearAndTerm
         {
             get { return LessonDate.Year + " " + Term; }
         }
 
         [Required]
-        [Display(Name = "Lesson Duration: ")]
+        [Display(Name = "Lesson Duration")]
         public LessonDurationType LessonDuration { get; set; } 
 
         public Double  Cost {
