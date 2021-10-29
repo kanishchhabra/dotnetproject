@@ -1,4 +1,4 @@
-﻿                                           using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,6 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HIT339_Assignment_1.Data;
 using HIT339_Assignment_1.Models;
+using System.Net.Mail;
+using System.Net;
+using System.IO;
+using System.Text;
+
 
 
 namespace HIT339_Assignment_1.Controllers
