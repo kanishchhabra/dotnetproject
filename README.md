@@ -3,7 +3,7 @@
 <br/>
 
 ## Demo
-<p>Live demo: <a>placeholder</a></p>
+<p>Live demo (test): http://invsys339-001-site1.etempurl.com/
 <!-- todo -->
 
 <br/>
