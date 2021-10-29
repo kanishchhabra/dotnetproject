@@ -79,6 +79,7 @@ namespace HIT339_Assignment_1.Controllers
             {
                 return NotFound();
             }
+            ViewData["Instrument"] = new SelectList(Enum.GetValues(typeof(InstrumentType)));
             return View(instrument);
         }
 

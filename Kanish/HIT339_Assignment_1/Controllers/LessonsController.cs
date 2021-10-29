@@ -24,12 +24,16 @@ namespace HIT339_Assignment_1.Controllers
         {
             if (id == null)
             {
-                var hIT339_Assignment_1Context = _context.Lesson.Include(l => l.Instructor).Include(l => l.Instrument).Include(l => l.Student);
+                var hIT339_Assignment_1Context = _context.Lesson
+                    .Include(l => l.Instructor)
+                    .Include(l => l.Instrument)
+                    .Include(l => l.Student);
                 return View(await hIT339_Assignment_1Context.ToListAsync());
             }
             else
             {
-                var hIT339_Assignment_1Context = _context.Lesson.Where(l => l.StudentID == id);
+                var hIT339_Assignment_1Context = _context.Lesson
+                    .Where(l => l.StudentID == id);
                 return View(await hIT339_Assignment_1Context.ToListAsync());
             }
         }

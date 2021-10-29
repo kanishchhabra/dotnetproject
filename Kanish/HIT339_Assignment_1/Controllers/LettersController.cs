@@ -22,7 +22,8 @@ namespace HIT339_Assignment_1.Controllers
         // GET: Letters
         public async Task<IActionResult> Index()
         {
-            var hIT339_Assignment_1Context = _context.Letter.Include(l => l.Student);
+            var hIT339_Assignment_1Context = _context.Letter
+                .Include(l => l.Student);
             return View(await hIT339_Assignment_1Context.ToListAsync());
         }
         // GET: Letters/Edit/5
