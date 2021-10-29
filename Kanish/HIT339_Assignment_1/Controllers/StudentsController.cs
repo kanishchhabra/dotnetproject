@@ -236,5 +236,38 @@ namespace HIT339_Assignment_1.Controllers
             // give to view
             return RedirectToAction("Letter", new { id = id });
         }
+        [HttpPost]
+        public JsonResult EmailLetter(int id, string mailBody)
+        {
+            //Getting the relevant student
+            var student = _context.Student.Where(m => m.Id == id).FirstOrDefault();
+
+            //Getting all the lessons of that student
+            var letter = _context.Letter.Where(l => l.StudentID == student.Id).FirstOrDefault();
+
+            //Email Code
+            try
+            {
+                string senderEmail = "dotnethit339@gmail.com";
+                string senderPassword = "cdu@hit339";
+
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+                client.EnableSsl = true;
+                client.Timeout = 100000;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new NetworkCredential(senderEmail, senderPassword);
+
+                MailMessage mailMessage = new MailMessage(senderEmail, student.PaymentEmailAddress, "Invoice: " + letter.Reference, mailBody);
+                mailMessage.IsBodyHtml = true;
+                client.Send(mailMessage);
+
+                return Json("Email Sent");
+            }
+            catch (Exception e)
+            {
+                return Json(e.Message);
+            }
+        }
     }
 }
