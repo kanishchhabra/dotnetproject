@@ -15,84 +15,69 @@
             }
         </ul>
     </p>
-        Please ensure your payment for
-    <ul>
-        @foreach (Lesson lesson in ViewBag.lessons)
-        {
-            <li>Lesson#@lesson.Id is finalized by @lesson.LessonDate.AddDays(30.0).ToString("dd/MM/yyyy")</li>
-        }
-    </ul>
-
-    <p>
-        If a student is no longer attending lessons, please email the CYCM to be removed off the email list.
-        If paying by Bank Transfer- EFT, please forward a copy of your payment to the office, to follow up and allocate to the student.
+    <p>Please ensure your payment for
+        <ul>
+            @foreach (Lesson lesson in ViewBag.lessons)
+            {
+                <li>Lesson#@lesson.Id is finalized by @lesson.LessonDate.AddDays(30.0).ToString("dd/MM/yyyy")</li>
+            }
+        </ul>
     </p>
+    <p>If a student is no longer attending lessons, please email the CYCM to be removed off the email list.
+        If paying by Bank Transfer- EFT, please forward a copy of your payment to the office, to follow up and allocate to the student.</p>
+
     </div>
 <hr />
 <div>
-    <h3>
-        PAYMENT DETAILS:
-    </h3>
-    <p>
-        Ref#: @Html.DisplayFor(model => model.Reference)
-        <br />
-        Student: @ViewBag.student.FirstName @ViewBag.student.LastName
-
-        Amount break down as follows:
+    <h3>PAYMENT DETAILS:</h3>
+    <p>Ref#: @Html.DisplayFor(model => model.Reference)</p>
+    <p>Student: @ViewBag.student.FirstName @ViewBag.student.LastName</p>
+    <p>Amount break down as follows:
         <ul>
             @foreach (Lesson lesson in ViewBag.lessons)
             {
                 <li>Lesson#@lesson.Id - $@lesson.Cost</li>
             }
         </ul>
-        Total Amount: AUD @Html.DisplayFor(model => model.Cost)
-        <br />
-
-        Please follow <a href="https://webpay.cdu.edu.au/musicschool/">this link</a> to make payment for
+        </p>
+    <p>Total Amount: AUD @Html.DisplayFor(model => model.Cost)</p>
+    <p>Please follow <a href="https://webpay.cdu.edu.au/musicschool/">this link</a> to make payment for
         <ul>
             @foreach (Lesson lesson in ViewBag.lessons)
             {
                 <li>Lesson#@lesson.Id - Year and Term @lesson.YearAndTerm</li>
             }
         </ul>
-
-        Apply for your Sport Vouchers for:
+        </p>
+    <p>Apply for your Sport Vouchers for:
         <ul>
             @foreach (Lesson lesson in ViewBag.lessons)
             {
                 <li>@lesson.Semester - @lesson.LessonDate.ToString("yyyy")</li>
             }
         </ul>
-        Please visit <a href="http://www.sportvoucher.nt.gov.au">this page</a>, as schools are no longer providing students with a sport voucher.
-        <br />
-    </p>
+        </p>
+    <p>Please visit <a href="http://www.sportvoucher.nt.gov.au">this page</a>, as schools are no longer providing students with a sport voucher.</p>
 
-    <p class="fw-bold">
-        Alternatively pay via Bank Transfer - EFT:
+    <p class="fw-bold">Alternatively pay via Bank Transfer - EFT:
         <br />New Bank Details:
     </p>
-    Bank: @Html.DisplayFor(model => model.BankName)
-    <br />
-    Account Name: @Html.DisplayFor(model => model.AccountName)
-    <br />
-    BSB Number: @Html.DisplayFor(model => model.BSB)
-    <br />
-    Account Number: @Html.DisplayFor(model => model.AccountNumber)
-    <br />
-    <br />
+    <p>Bank: @Html.DisplayFor(model => model.BankName)</p>
+    <p>Account Name: @Html.DisplayFor(model => model.AccountName)</p>
+    <p>BSB Number: @Html.DisplayFor(model => model.BSB)</p>
+    <p>Account Number: @Html.DisplayFor(model => model.AccountNumber)</p> 
 
     <p class="fst-italic">
         Reference number – please include ‘CYCM, Reference number and student name’
         The CYCM is committed to providing students with quality lessons in a positive learning environment.
     </p>
 </div>
+<div>
     <hr />
-    <p class="fst-italic">
-        Regards,
-        @Html.DisplayFor(model => model.Signature)
-    </p>
+    <p class="fst-italic">Regards, @Html.DisplayFor(model => model.Signature)</p>
     <button class="btn-warning" onclick="sendMail()">Send Email</button>
     <br />
+</div>
 
     <div class="text-sm-center">
         <a asp-controller="Letters" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
