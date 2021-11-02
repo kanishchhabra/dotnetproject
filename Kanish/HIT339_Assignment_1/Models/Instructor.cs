@@ -21,9 +21,9 @@ namespace HIT339_Assignment_1.Models
         public string LastName { get; set; }
 
         [Display(Name = "Full Name")]
-        public string Reference
+        public string IFullName
         {
-            get { return Id + " " + FirstName + " " + LastName; }
+            get { return FirstName + " " + LastName; }
         }
         [Display(Name = "Date of Birth")]
         [DataType(DataType.Date)]
