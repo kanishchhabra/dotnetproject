@@ -103,9 +103,9 @@ namespace HIT339_Assignment_1.Controllers
             {
                 return NotFound();
             }
-            ViewData["InstructorID"] = new SelectList(_context.Instructor, "Id", "IFullName", lesson.InstructorID);
+            ViewData["InstructorID"] = new SelectList(_context.Instructor, "Id", "Reference", lesson.InstructorID);
             ViewData["InstrumentID"] = new SelectList(_context.Instrument, "id", "InstrumentName", lesson.InstrumentID);
-            ViewData["StudentID"] = new SelectList(_context.Student, "Id", "SFullName", lesson.StudentID);
+            ViewData["StudentID"] = new SelectList(_context.Student, "Id", "Reference", lesson.StudentID);
             ViewData["Term"] = new SelectList(Enum.GetValues(typeof(TermType)));
             ViewData["Semester"] = new SelectList(Enum.GetValues(typeof(SemesterType)));
             ViewData["LessonDuration"] = new SelectList(Enum.GetValues(typeof(LessonDurationType)));

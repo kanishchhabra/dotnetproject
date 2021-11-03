@@ -75,10 +75,12 @@
 <div>
     <hr />
     <p class="fst-italic">Regards, @Html.DisplayFor(model => model.Signature)</p>
-    <button class="btn-warning" onclick="sendMail()">Send Email</button>
+    
     <br />
 </div>
-
+<div class="text-sm-center mb-3">
+    <button class="btn btn-primary" onclick="sendMail()">Send Email</button>
+</div>
     <div class="text-sm-center">
         <a asp-controller="Letters" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
         <a asp-controller="Letters" asp-action="Edit" asp-route-id="@Model.Id">Delete</a> |
