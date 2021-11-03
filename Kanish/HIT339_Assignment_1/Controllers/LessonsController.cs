@@ -103,9 +103,9 @@ namespace HIT339_Assignment_1.Controllers
             {
                 return NotFound();
             }
-            ViewData["InstructorID"] = new SelectList(_context.Instructor, "Id", "Reference", lesson.InstructorID);
+            ViewData["InstructorID"] = new SelectList(_context.Instructor, "Id", "IFullName", lesson.InstructorID);
             ViewData["InstrumentID"] = new SelectList(_context.Instrument, "id", "InstrumentName", lesson.InstrumentID);
-            ViewData["StudentID"] = new SelectList(_context.Student, "Id", "Reference", lesson.StudentID);
+            ViewData["StudentID"] = new SelectList(_context.Student, "Id", "SFullName", lesson.StudentID);
             ViewData["Term"] = new SelectList(Enum.GetValues(typeof(TermType)));
             ViewData["Semester"] = new SelectList(Enum.GetValues(typeof(SemesterType)));
             ViewData["LessonDuration"] = new SelectList(Enum.GetValues(typeof(LessonDurationType)));
@@ -185,6 +185,28 @@ namespace HIT339_Assignment_1.Controllers
         private bool LessonExists(int id)
         {
             return _context.Lesson.Any(e => e.Id == id);
+        }
+
+        //LETTER
+        // GET: Lessons/Letter/5
+        public async Task<IActionResult> Letter(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var lesson = await _context.Lesson
+                .Include(l => l.Instrument)
+                .Include(l => l.Student)
+                .Include(l => l.Instructor)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (lesson == null)
+            {
+                return NotFound();
+            }
+
+            return View(lesson);
         }
     }
 }

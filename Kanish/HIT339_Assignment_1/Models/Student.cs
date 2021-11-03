@@ -20,6 +20,11 @@ namespace HIT339_Assignment_1.Models
         public string LastName { get; set; }
 
         [Display(Name = "Full Name")]
+        public string SFullName
+        {
+           get { return FirstName + " " + LastName; }
+        }
+
         public string Reference
         {
             get { return Id + " " + FirstName + " " + LastName; }
