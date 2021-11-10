@@ -242,7 +242,7 @@ namespace HIT339_Assignment_1.Controllers
             return RedirectToAction("Letter", new { id = id });
         }
         [HttpPost]
-        public JsonResult EmailLetter(int id, string mailBody)
+        public JsonResult EmailLetter(int id, string emailBody)
         {
             //Getting the relevant student
             var student = _context.Student.Where(m => m.Id == id).FirstOrDefault();
@@ -263,7 +263,7 @@ namespace HIT339_Assignment_1.Controllers
                 client.UseDefaultCredentials = false;
                 client.Credentials = new NetworkCredential(senderEmail, senderPassword);
 
-                MailMessage mailMessage = new MailMessage(senderEmail, student.PaymentEmailAddress, "Invoice: " + letter.Reference, mailBody);
+                MailMessage mailMessage = new MailMessage(senderEmail, student.PaymentEmailAddress, "Invoice: " + letter.Reference, emailBody);
                 mailMessage.IsBodyHtml = true;
                 client.Send(mailMessage);
 
