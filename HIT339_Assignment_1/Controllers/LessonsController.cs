@@ -33,7 +33,10 @@ namespace HIT339_Assignment_1.Controllers
             else
             {
                 var hIT339_Assignment_1Context = _context.Lesson
-                    .Where(l => l.StudentID == id);
+                    .Where(l => l.StudentID == id)
+                    .Include(l => l.Instructor)
+                    .Include(l => l.Instrument)
+                    .Include(l => l.Student);
                 return View(await hIT339_Assignment_1Context.ToListAsync());
             }
         }

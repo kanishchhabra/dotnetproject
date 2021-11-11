@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace HIT339_Assignment_1.Migrations
+namespace HIT339_Assignment_2.Migrations
 {
     [DbContext(typeof(HIT339_Assignment_1Context))]
-    [Migration("20211103075815_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20211111063959_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
