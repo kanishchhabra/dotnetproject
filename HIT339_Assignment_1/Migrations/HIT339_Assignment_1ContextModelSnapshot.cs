@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace HIT339_Assignment_1.Migrations
+namespace HIT339_Assignment_2.Migrations
 {
     [DbContext(typeof(HIT339_Assignment_1Context))]
     partial class HIT339_Assignment_1ContextModelSnapshot : ModelSnapshot
