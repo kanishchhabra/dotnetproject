@@ -19,20 +19,24 @@
                 </button>
                 <div class="navbar-collapse collapse d-lg-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                        @{
+                            var pageName = ViewContext.RouteData.Values["controller"].ToString();
+                        }
+
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Instructors" asp-action="Index">Instructors</a>
+                            <a class="@(pageName == "Instructors" ? "active" : "") nav-link instructor" asp-area="" asp-controller="Instructors" asp-action="Index">Instructors</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Instruments" asp-action="Index">Instruments</a>
+                            <a class="@(pageName == "Instruments" ? "active" : "") nav-link instrument" asp-area="" asp-controller="Instruments" asp-action="Index">Instruments</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Students" asp-action="Index">Students</a>
+                            <a class="@(pageName == "Students" ? "active" : "") nav-link student" asp-area="" asp-controller="Students" asp-action="Index">Students</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Lessons" asp-action="Index">Lessons</a>
+                            <a class="@(pageName == "Lessons" ? "active" : "") nav-link lesson" asp-area="" asp-controller="Lessons" asp-action="Index">Lessons</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Letters" asp-action="Index">Letters</a>
+                            <a class="@(pageName == "Letters" ? "active" : "") nav-link letter" asp-area="" asp-controller="Letters" asp-action="Index">Letters</a>
                         </li>
                     </ul>
                 </div>
