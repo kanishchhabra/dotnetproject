@@ -3,7 +3,7 @@
 <br/>
 
 ## Demo
-<p>Live demo (test): http://invsys339-001-site1.etempurl.com/
+<p>Live demo: http://invsys339-001-site1.etempurl.com/
 <!-- todo -->
 
 <br/>
@@ -51,3 +51,8 @@ git clone https://github.com/kanishchhabra/dotnetproject.git
 ## External Documents:
 https://docs.google.com/document/d/14m0Ubkbh8IxJ5jWu6KVdqjOd3OeBDa9Hb5qtTdSF7u0/edit?usp=sharing
 <!-- todo: list below links of doeuments from google drive  -->
+  
+## Project plan and timeline:
+ - Task board: https://trello.com/b/sEZd7Bs0/hit339-team-4
+ - Timeline: https://trello.com/b/sEZd7Bs0/hit339-team-4/timeline
+  
