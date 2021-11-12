@@ -88,12 +88,13 @@
     </div>
 </div>
 <div class="text-sm-center mb-3">
-    <button class="btn btn-primary" onclick="sendMail()">Send Email</button>
+    <a class="btn btn-primary rounded" onclick="sendMail()">Send Email</a>
+    <a class="btn btn-info  rounded" asp-controller="Letters" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> 
+    <a class="btn btn-danger rounded" asp-controller="Letters" asp-action="Delete" asp-route-id="@Model.Id">Delete</a> 
+    <a class="btn btn-secondary rounded" asp-action="Index">Back to List</a>
+
 </div>
     <div class="text-sm-center">
-        <a asp-controller="Letters" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-        <a asp-controller="Letters" asp-action="Edit" asp-route-id="@Model.Id">Delete</a> |
-        <a asp-action="Index">Back to List</a> <br />
 
     </div>
     @section Scripts

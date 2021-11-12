@@ -33,16 +33,15 @@
                 <select asp-for="Gender" class="form-control" asp-items="ViewBag.Gender"></select>
                 <span asp-validation-for="Gender" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="form-group my-3">
+                <input type="submit" value="Save" class="btn btn-primary rounded" />
+                <a class="btn btn-secondary rounded" asp-action="Index">Back to List</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
