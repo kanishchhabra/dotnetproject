@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="favicon.ico" type="image/ico" href="~/favicon.ico">
+    <title>@ViewData["Title"] - HIT339_Assignment_1</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-toggleable-lg navbar-dark bg-dark border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Invoicing System</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-lg-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        @{
+                            var pageName = ViewContext.RouteData.Values["controller"].ToString();
+                        }
+
+                        <li class="nav-item">
+                            <a class="@(pageName == "Instructors" ? "active" : "") nav-link instructor" asp-area="" asp-controller="Instructors" asp-action="Index">Instructors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="@(pageName == "Instruments" ? "active" : "") nav-link instrument" asp-area="" asp-controller="Instruments" asp-action="Index">Instruments</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="@(pageName == "Students" ? "active" : "") nav-link student" asp-area="" asp-controller="Students" asp-action="Index">Students</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="@(pageName == "Lessons" ? "active" : "") nav-link lesson" asp-area="" asp-controller="Lessons" asp-action="Index">Lessons</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="@(pageName == "Letters" ? "active" : "") nav-link letter" asp-area="" asp-controller="Letters" asp-action="Index">Letters</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3" >
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="text-center" style=" white-space:normal;line-height:1.5rem">
+            &copy; 2021 - Made By HIT339 Team 4 <br />Kanish Chhabra: S316921 | Darlane Tang: S314609 | Meng Yuan: S342742
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

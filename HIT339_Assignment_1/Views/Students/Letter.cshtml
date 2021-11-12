@@ -1,0 +1,125 @@
+﻿@model HIT339_Assignment_1.Models.Letter
+
+@{
+    ViewData["Title"] = "Letter";
+}
+<div class="emailBody">
+    <h1>Invoice Letter</h1> <hr>
+    <div>
+        <h3>Dear @ViewBag.student.FirstName,</h3>
+        <p>Welcome to all existing students and new students</p>
+        <p>
+            <ul>
+                @foreach (Lesson lesson in ViewBag.lessons)
+                {
+                    <li>Term: @lesson.Term will commence on @lesson.LessonDate.ToString("dd/MM/yyyy") </li>
+                }
+            </ul>
+        </p>
+        <p>
+            Please ensure your payment for
+            <ul>
+                @foreach (Lesson lesson in ViewBag.lessons)
+                {
+                    <li>Lesson#@lesson.Id is finalized by @lesson.LessonDate.AddDays(30.0).ToString("dd/MM/yyyy")</li>
+                }
+            </ul>
+        </p>
+        <p>
+            If a student is no longer attending lessons, please email the CYCM to be removed off the email list.
+            If paying by Bank Transfer- EFT, please forward a copy of your payment to the office, to follow up and allocate to the student.
+        </p>
+
+    </div>
+    <hr />
+    <div>
+        <h3>PAYMENT DETAILS:</h3>
+        <p>Ref#: @Html.DisplayFor(model => model.Reference)</p>
+        <p>Student: @ViewBag.student.FirstName @ViewBag.student.LastName</p>
+        <p>
+            Amount break down as follows:
+            <ul>
+                @foreach (Lesson lesson in ViewBag.lessons)
+                {
+                    <li>Lesson#@lesson.Id - $@lesson.Cost</li>
+                }
+            </ul>
+        </p>
+        <p>Total Amount: AUD @Html.DisplayFor(model => model.Cost)</p>
+        <p>
+            Please follow <a href="https://webpay.cdu.edu.au/musicschool/">this link</a> to make payment for
+            <ul>
+                @foreach (Lesson lesson in ViewBag.lessons)
+                {
+                    <li>Lesson#@lesson.Id - Year and Term @lesson.YearAndTerm</li>
+                }
+            </ul>
+        </p>
+        <p>
+            Apply for your Sport Vouchers for:
+            <ul>
+                @foreach (Lesson lesson in ViewBag.lessons)
+                {
+                    <li>@lesson.Semester - @lesson.LessonDate.ToString("yyyy")</li>
+                }
+            </ul>
+        </p>
+        <p>Please visit <a href="http://www.sportvoucher.nt.gov.au">this page</a>, as schools are no longer providing students with a sport voucher.</p>
+
+        <p class="fw-bold">
+            Alternatively pay via Bank Transfer - EFT:
+            <br />New Bank Details:
+        </p>
+        <p>Bank: @Html.DisplayFor(model => model.BankName)</p>
+        <p>Account Name: @Html.DisplayFor(model => model.AccountName)</p>
+        <p>BSB Number: @Html.DisplayFor(model => model.BSB)</p>
+        <p>Account Number: @Html.DisplayFor(model => model.AccountNumber)</p>
+
+        <p class="fst-italic">
+            Reference number – please include ‘CYCM, Reference number and student name’
+            The CYCM is committed to providing students with quality lessons in a positive learning environment.
+        </p>
+    </div>
+    <div>
+        <hr />
+        <p class="fst-italic">Regards, @Html.DisplayFor(model => model.Signature)</p>
+
+        <br />
+    </div>
+</div>
+<div class="text-sm-center mb-3">
+    <a class="btn btn-primary rounded" onclick="sendMail()">Send Email</a>
+    <a class="btn btn-info  rounded" asp-controller="Letters" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> 
+    <a class="btn btn-danger rounded" asp-controller="Letters" asp-action="Delete" asp-route-id="@Model.Id">Delete</a> 
+    <a class="btn btn-secondary rounded" asp-action="Index">Back to List</a>
+
+</div>
+    <div class="text-sm-center">
+
+    </div>
+    @section Scripts
+{
+        <script>
+
+        function sendMail() {
+            var emailBody = "";
+            emailBody += $(".emailBody").html();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("EmailLetter", "Students")',
+                data: {
+                    'emailBody': emailBody,
+                    'id': @Model.StudentID,
+                },
+                success: function (data) {
+                    console.log(emailBody);
+                    alert("Success");
+                },
+                error: function (result) {
+                    console.log(emailBody);
+                    alert("Failed");
+                }
+            });
+        }
+        </script>
+    }

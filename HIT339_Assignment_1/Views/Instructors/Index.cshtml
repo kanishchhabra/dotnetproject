@@ -1,0 +1,73 @@
+﻿@model IEnumerable<HIT339_Assignment_1.Models.Instructor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="d-flex justify-content-between">
+
+    <h1 class="my-2 align-self-center">Instructors</h1>
+
+    <div class="my-2">
+        <a class=" btn btn-primary rounded" asp-action="Create"> Create New </a>
+    </div>
+</div>
+
+<div class="table-responsive my-2">
+    <table class="table">
+        <thead>
+            <tr style="color:black">
+                <th>
+                    @Html.DisplayNameFor(model => model.Reference)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateOfBirth)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Age)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Gender)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Reference)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfBirth)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Age)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <a class="" data-toggle="dropdown" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                                </svg>
+                            </a>
+                            <ul class="dropdown-menu overflow-hidden" style="min-width:5rem">
+                                <li class="dropdown-item ">
+                                    <a asp-action="Edit" asp-route-id="@item.Id" style="text-decoration:none; display:flex">Edit</a>
+                                </li>
+                                <li class="dropdown-item ">
+                                    <a asp-action="Delete" asp-route-id="@item.Id" style="text-decoration:none; display:flex">Delete</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
